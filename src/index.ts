@@ -11,8 +11,16 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		return new Response('Hello World!');
-	},
-};
+import { WorkerEntrypoint } from "cloudflare:workers";
+
+export default class extends WorkerEntrypoint {
+  async fetch() { return new Response("Hello from counter-service"); }
+
+  async newCounter() {
+    let value = 0;
+    return (increment = 0) => {
+      value += increment;
+      return value;
+    }
+  }
+}
