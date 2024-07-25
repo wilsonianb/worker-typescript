@@ -11,8 +11,16 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+import type AdderService from './adder'
+
+interface Env {
+  ADDER_SERVICE: Service<AdderService>;
+}
+
 export default {
-	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		return new Response('Hello World!');
-	},
-};
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const sum = await env.ADDER_SERVICE.add(1, 2);
+    return Response.json({ sum });
+  }
+}
+

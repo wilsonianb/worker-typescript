@@ -97,9 +97,9 @@ compatibility_flags = ["nodejs_compat"]
 
 # Bind another Worker service. Use this binding to call another Worker without network overhead.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
-# [[services]]
-# binding = "MY_SERVICE"
-# service = "my-service"
+[[services]]
+binding = "ADDER_SERVICE"
+service = "tlw485a1fxtlqb0wqaui597x"
 
 # Bind a Vectorize index. Use to store and query vector embeddings for semantic search, classification and other vector search use-cases.
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#vectorize-indexes
